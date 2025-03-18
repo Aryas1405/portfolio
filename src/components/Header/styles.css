@@ -1,0 +1,26 @@
+.header-appbar {
+    background: linear-gradient(90deg, #0b1522, #020617, #000000) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9) !important; /* Deep shadow for bold presence */
+    padding: 0px 10%;
+    height: 80px !important;
+}
+
+.header-toolbar {
+    display: flex !important;
+    justify-content: right !important;
+    gap: 2rem !important;
+    min-height: 100% !important;
+}
+
+.header-button {
+    text-transform: none !important;
+    color: #e5e7eb !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    transition: color 0.3s ease !important;
+    font-size: 16px !important;
+}
+
+.header-button:hover {
+    color: #90caf9 !important;
+}

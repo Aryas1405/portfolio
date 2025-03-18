@@ -1,6 +1,6 @@
 // App.js
 import React from 'react';
-import Header from './src/components/Header';
+import Header from './src/components/Header/Header';
 import About from './src/components/About';
 import Projects from './src/components/Projects';
 import Experience from './src/components/Experience';
