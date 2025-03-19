@@ -1,0 +1,53 @@
+.experienceSection {
+    display: flex;
+    align-items: center !important;
+    flex-direction: column !important;
+    max-width: 100% !important;
+}
+
+.experience-card {
+    min-width: 100% !important;
+    border-radius: 8px !important;
+    background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+    color: #D1D5DB !important;
+    padding: 25px !important;
+    margin-top: 10px !important;
+
+}
+
+.exp-name {
+    font-weight: bold !important;
+    margin-bottom: 40px !important;
+}
+
+.title {
+    font-weight: bold !important;
+}
+
+.company {
+    color: #60A5FA !important;
+}
+
+.title-container {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+}
+
+.experience-points {
+    margin-top: 10px;
+    padding-left: 20px;
+    text-align: left; 
+}
+
+.experience-point {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.experience-point::before {
+    content: '•';
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}

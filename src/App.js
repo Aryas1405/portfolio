@@ -2,22 +2,28 @@
 import React from 'react';
 import Header from './components/Header/Header';
 import Intro from './components/Intro/Intro';
-import About from './components/About';
-import Projects from './components/Projects';
-import Experience from './components/Experience';
+import About from './components/About/About';
+import Projects from './components/Projects/Projects';
+import Experience from './components/Experience/Experience';
 import Contact from './components/Contact';
+import Skills from './components/Skills/Skills';
+
 import './assets/styles/main.scss';
+import { Box } from '@mui/material';
 
 const App = () => {
     return (
-        <div className="app-container">
+        <Box className="app-container">
             <Header />
-            <Intro />
-            <About />
-            <Projects />
-            <Experience />
-            <Contact />
-        </div>
+            <Box className='body-container'>
+                <Intro />
+                <About />
+                <Skills />
+                <Experience />
+                <Projects />
+                <Contact />
+            </Box>
+        </Box>
     );
 }
 

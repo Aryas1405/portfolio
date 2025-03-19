@@ -2,8 +2,8 @@
 import React from 'react';
 import Header from './src/components/Header/Header';
 import About from './src/components/About';
-import Projects from './src/components/Projects';
-import Experience from './src/components/Experience';
+import Projects from './src/components/Projects/Projects';
+import Experience from './src/components/Experience/Experience';
 import Contact from './src/components/Contact';
 import Footer from './src/components/Footer';
 import './assets/styles/main.scss';

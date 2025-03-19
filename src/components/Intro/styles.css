@@ -1,46 +1,132 @@
 .intro-container {
     display: flex !important;
-    padding: 40px;
-
+    width: 100% !important;
+    padding: 40px 0 !important;
 }
 
+.intro {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.image-box {
+    display: flex;
+    justify-content: end;
+    width: 50%
+}
+
+.intro-name {
+    background: linear-gradient(90deg, #3A7DFF, #D1006F); /* Light blue to deep pink gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.intro-name:hover {
+    transform: scale(1.1); /* Pop-out effect on hover */
+    cursor: pointer;
+}
+
+.description {
+    margin-top: 20px;
+}
 .image-container {
     position: relative;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
     display: inline-block;
-}
+    border-radius: 50%; /* Circular shape */
+    background: linear-gradient(135deg, rgba(58, 125, 255, 1), rgba(209, 0, 111, 1)); /* Deep blue to deep pink */
+    padding: 8px; /* Border thickness */
+    width: 300px; 
+    height: 300px;
 
-.border-ring {
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    width: 220px;  /* Slightly larger for the border effect */
-    height: 220px;
-    border-radius: 50%;
-    background: conic-gradient(from 0deg, #AAB7B8, #CBD5E1); /* Soft gradient */
-    
-    z-index: -1; /* Puts the border behind the image */
-    transform: scale(0); /* Starts as hidden */
-    animation: spreadBorder 2.5s ease-out forwards;
-}
-
-@keyframes spreadBorder {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+    /* Faded effect */
+    -webkit-mask: 
+        radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%) !important;
+    mask: 
+        radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%) !important;
 }
 
 .intro-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    background-color: #0b1522; /* Dark inner background */
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 50% !important;
+    object-fit: cover  !important;
+}
+
+.button-container {
+    display: flex;
+    margin-top: 30px;
+}
+
+.touch-button {
+    text-transform: none !important;
+    background: linear-gradient(90deg, #3A7DFF, #D1006F) !important;
+    color: #D1D5DB !important;
+    border: none !important; 
+    border-radius: 30px !important; 
+    padding: 12px 24px !important; 
+    font-weight: bold !important;
+    font-size: 16px !important;
+    cursor: pointer !important; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    margin-right: 10px !important;
+}
+
+.touch-button:hover {
+    transform: scale(1.05) !important;
+}
+
+.cv-button {
+    text-transform: none !important;
+    background: rgb(52, 52, 52) !important;
+    color: #D1D5DB !important;
+    border: none !important; 
+    border-radius: 30px !important; 
+    padding: 12px 24px !important; 
+    font-weight: bold !important;
+    font-size: 16px !important;
+    cursor: pointer !important; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.cv-button:hover {
+    transform: scale(1.05) !important;
+}
+
+@media (max-width: 768px) {
+    .intro-container {
+        flex-direction: column-reverse; /* Stack layout for mobile */
+        padding: 20px 0 !important;
+    }
+    .intro-name {
+        font-size: 40px !important;
+    }
+    .description {
+        margin-top: 20px;
+    }
+    .intro,
+    .image-box {
+        width: 100%; /* Full width for mobile */
+        justify-content: center;
+    }
+
+    .image-container {
+        width: 200px;
+        height: 200px; /* Reduce image size for mobile */
+        margin-bottom: 20px;
+    }
+
+    .button-container {
+        flex-direction: column; /* Stack buttons vertically */
+        width: 100%;
+    }
+
+    .touch-button,
+    .cv-button {
+        width: 100%; /* Full-width buttons for easy touch interaction */
+        margin-right: 0 !important;
+        margin-top: 20px !important;
+    }
 }
