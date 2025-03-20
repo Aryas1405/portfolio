@@ -15,7 +15,7 @@ const Intro = () => {
                     Backend Developer
                 </Typography>
                 <Typography variant="h6" className="description">
-                    I am a Software Developer dedicated to building scalable, secure, and high-performance backend systems that drive modern applications and deliver exceptional user experiences.
+                    Experienced Backend Developer with 5 years of expertise in building scalable systems, RESTful APIs, and cloud solutions. Skilled in Node.js, PostgreSQL, and AWS, with a strong focus on performance, security, and efficient deployment.
                 </Typography>
                 <Box className='button-container'>
                     <Button className='touch-button' href="#contact">Get in Touch</Button>

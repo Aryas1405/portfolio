@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Typography, Card, CardContent, Box, Chip } from '@mui/material';
 import './styles.css'; // Import CSS file for styling
+import { motion } from 'framer-motion';
 
 const Projects = () => {
     const projects = [
@@ -11,7 +12,7 @@ const Projects = () => {
         },
         {
             name: 'ONDC Seller App',
-            description: ['Created scalable product management workflows with MongoDB.',' Designed and implemented product variant management, tax structures, and order workflows'],
+            description: ['Created scalable product management workflows with MongoDB.', ' Designed and implemented product variant management, tax structures, and order workflows'],
             tags: ['MongoDB', 'Node.js', 'Express.js']
         },
         {
@@ -40,34 +41,54 @@ const Projects = () => {
             tags: ['Node.js', 'MongoDB', 'Express.js', 'Mongoose', 'Socket.io']
         },
     ];
-
+     const smoothAnimation = {
+        hidden: { 
+            opacity: 0, 
+            y: 30  // Subtle movement for a gentler effect
+        },
+        visible: { 
+            opacity: 1, 
+            y: 0, 
+            transition: { 
+                duration: 1.5,  // Extended duration for smoother flow
+                ease: [0.25, 1, 0.5, 1]  // Soft, natural easing curve
+            }
+        }
+    };
     return (
-        <Container id="projects" className="projects-container">
-            <Typography variant="h4" className="section-title">Projects</Typography>
-            <Box className="project-grid">
-                {projects.map((project, index) => (
-                    <Card key={index} className="project-card">
-                        <CardContent>
-                            <Typography variant="h5" className="project-title">{project.name}</Typography>
-                            <Typography className="project-description">
-                                <ul>
-                                    {project.description.map((desc, index) => (
-                                        <li key={index}>{desc}</li>
+        <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={smoothAnimation}
+        >
+            <Container id="projects" className="projects-container">
+                <Typography variant="h4" className="section-title">Projects</Typography>
+                <Box className="project-grid">
+                    {projects.map((project, index) => (
+                        <Card key={index} className="project-card">
+                            <CardContent>
+                                <Typography variant="h5" className="project-title">{project.name}</Typography>
+                                <Typography className="project-description">
+                                    <ul>
+                                        {project.description.map((desc, index) => (
+                                            <li key={index}>{desc}</li>
+                                        ))}
+                                    </ul>
+                                </Typography>
+
+                                <Box className="tags">
+                                    {project.tags.map((tag, idx) => (
+                                        <Chip key={idx} label={tag} className="tag-chip" />
                                     ))}
-                                </ul>
-                            </Typography>
+                                </Box>
 
-                            <Box className="tags">
-                                {project.tags.map((tag, idx) => (
-                                    <Chip key={idx} label={tag} className="tag-chip" />
-                                ))}
-                            </Box>
-
-                        </CardContent>
-                    </Card>
-                ))}
-            </Box>
-        </Container>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </Box>
+            </Container>
+        </motion.div>
     );
 };
 

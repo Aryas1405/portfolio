@@ -46,10 +46,9 @@
     padding: 0.3rem 1rem !important;
     font-weight: 500 !important;
 }
-/* Responsive Design */
 @media (max-width: 1024px) {
     .project-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 cards per row for tablets */
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 cards per row for tablets */
     }
 }
 

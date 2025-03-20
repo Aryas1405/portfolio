@@ -24,6 +24,7 @@ import Auth0Icon from './../../assets/icons/auth0-svgrepo-com.svg';
 import LinuxIcon from './../../assets/icons/Linux.svg';
 import CICDIcon from './../../assets/icons/ci-cd-svgrepo-com.svg';
 import RestApiIcon from './../../assets/icons/rest-api.svg';
+import { motion } from 'framer-motion';
 
 
 const skillsData = [
@@ -50,27 +51,49 @@ const skillsData = [
     { name: 'Docker', icon: DockerIcon },
     { name: 'CI/CD', icon: CICDIcon },
     { name: 'linux', icon: LinuxIcon },
-    
+
 ];
 
 const Skills = () => {
+     const smoothAnimation = {
+        hidden: { 
+            opacity: 0, 
+            y: 30  // Subtle movement for a gentler effect
+        },
+        visible: { 
+            opacity: 1, 
+            y: 0, 
+            transition: { 
+                duration: 1.5,  // Extended duration for smoother flow
+                ease: [0.25, 1, 0.5, 1]  // Soft, natural easing curve
+            }
+        }
+    };
     return (
-        <Box className='skills-section' id="skills">
-            <Typography variant="h4" className='skills-title'>
-                Technical Skills
-            </Typography>
+        <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={smoothAnimation}
+        >
+            <Box className='skills-section' id="skills">
+                <Typography variant="h4" className='skills-title'>
+                    Technical Skills
+                </Typography>
 
-            <Box className='skills-grid'>
-                {skillsData.map((skill, index) => (
-                    <Box key={index} className='skill-box'>
-                        <img src={skill.icon} alt={skill.name} className='skill-icon' />
-                        <Typography variant="h6" className='skill-name'>
-                            {skill.name}
-                        </Typography>
-                    </Box>
-                ))}
+                <Box className='skills-grid'>
+                    {skillsData.map((skill, index) => (
+                        <Box key={index} className='skill-box'>
+                            <img src={skill.icon} alt={skill.name} className='skill-icon' />
+                            <Typography variant="h6" className='skill-name'>
+                                {skill.name}
+                            </Typography>
+                        </Box>
+                    ))}
+                </Box>
             </Box>
-        </Box>
+        </motion.div>
+
     );
 };
 

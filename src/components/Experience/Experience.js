@@ -1,8 +1,23 @@
 import React from 'react';
 import { Container, Typography, Box, Card, CardContent } from '@mui/material';
 import './styles.css';
+import { motion } from 'framer-motion';
 
 const Experience = () => {
+     const smoothAnimation = {
+        hidden: { 
+            opacity: 0, 
+            y: 30  // Subtle movement for a gentler effect
+        },
+        visible: { 
+            opacity: 1, 
+            y: 0, 
+            transition: { 
+                duration: 1.5,  // Extended duration for smoother flow
+                ease: [0.25, 1, 0.5, 1]  // Soft, natural easing curve
+            }
+        }
+    };
     const experiences = [
         {
             title: 'Senior Software Engineer',
@@ -40,38 +55,45 @@ const Experience = () => {
     ];
 
     return (
-        <Container className='experienceSection' id="experience" sx={{ py: 8 }}>
-            <Typography className='exp-name' variant="h4" gutterBottom>
-                Professional Experience
-            </Typography>
+        <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={smoothAnimation}
+        >
+            <Container className='experienceSection' id="experience" sx={{ py: 8 }}>
+                <Typography className='exp-name' variant="h4" gutterBottom>
+                    Professional Experience
+                </Typography>
 
-            {experiences.map((exp, index) => (
-                <Card key={index} className="experience-card" sx={{ mb: 3 }}>
-                    <CardContent>
-                        <Box className='title-container'>
-                            <Typography className='title' variant="h5">{exp.title}</Typography>
-                            <Typography variant="subtitle2">{exp.duration}</Typography>
-                        </Box>
-                        <Typography className='company' variant="subtitle1">
-                            <a
-                                href={exp.companyUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{ textDecoration: 'none', color: 'inherit' }}
-                            >
-                                {exp.company}
-                            </a>
-                        </Typography>
-                        {/* Bullet Points for Key Responsibilities */}
-                        <ul className="experience-points">
-                            {exp.points.map((point, idx) => (
-                                <li key={idx} className="experience-point">{point}</li>
-                            ))}
-                        </ul>
-                    </CardContent>
-                </Card>
-            ))}
-        </Container>
+                {experiences.map((exp, index) => (
+                    <Card key={index} className="experience-card" sx={{ mb: 3 }}>
+                        <CardContent>
+                            <Box className='title-container'>
+                                <Typography className='title' variant="h5">{exp.title}</Typography>
+                                <Typography variant="subtitle2">{exp.duration}</Typography>
+                            </Box>
+                            <Typography className='company' variant="subtitle1">
+                                <a
+                                    href={exp.companyUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{ textDecoration: 'none', color: 'inherit' }}
+                                >
+                                    {exp.company}
+                                </a>
+                            </Typography>
+                            {/* Bullet Points for Key Responsibilities */}
+                            <ul className="experience-points">
+                                {exp.points.map((point, idx) => (
+                                    <li key={idx} className="experience-point">{point}</li>
+                                ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                ))}
+            </Container>
+        </motion.div>
     );
 };
 

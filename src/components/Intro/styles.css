@@ -26,12 +26,12 @@
 }
 
 .intro-name:hover {
-    transform: scale(1.1); /* Pop-out effect on hover */
+    transform: scale(1.05);
     cursor: pointer;
 }
 
 .description {
-    margin-top: 20px;
+    margin-top: 20px !important;
 }
 .image-container {
     position: relative;
