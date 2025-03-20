@@ -21,7 +21,7 @@ const About = () => {
                     <Typography variant='h6'>Project Completed</Typography>
                 </Box>
                 <Box className='card-box'>
-                    <Typography variant='h4' className='value'>20+</Typography>
+                    <Typography variant='h4' className='value'>25+</Typography>
                     <Typography variant='h6'>Technologies</Typography>
                 </Box>
             </Box>
