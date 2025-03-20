@@ -58,7 +58,7 @@ const Experience = () => {
         <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
             variants={smoothAnimation}
         >
             <Container className='experienceSection' id="experience" sx={{ py: 8 }}>

@@ -85,6 +85,9 @@ html {
 }
 
 @media (max-width: 768px) {
+    .header-appbar {
+        padding: 0px 5% !important;
+    }
     .desktop-nav {
         display: none
     }

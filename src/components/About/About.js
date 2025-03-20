@@ -22,7 +22,7 @@ const About = () => {
         <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }} // Trigger animation when 30% visible
+            viewport={{ once: true, amount: 0.1 }} // Trigger animation when 30% visible
             variants={smoothAnimation}
         >
             <Box className='about-section' id="about">

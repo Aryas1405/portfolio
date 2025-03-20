@@ -73,7 +73,7 @@ const Skills = () => {
         <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
             variants={smoothAnimation}
         >
             <Box className='skills-section' id="skills">
