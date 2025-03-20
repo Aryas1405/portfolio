@@ -49,26 +49,31 @@
     font-weight: bold !important
 }
 
+@media (max-width: 1024px) {
+    .about-container {
+        width: 80%;
+    }
+    .cards-container {
+        width:100% !important;
+    }
+
+    .card-box {
+        min-width: 150px !important;
+    }
+
+}
+
 @media (max-width: 768px) {
     .about-container {
         width: 80%;
     }
 
     .cards-container {
-        width: 80% !important;
+        width: 100% !important;
         flex-direction: column !important;
     }
 
     .card-box {
         margin-top: 20px !important;
     }
-}
-@media (max-width: 1024px) {
-    .about-container {
-        width: 80%;
-    }
-    .cards-container {
-        width:90% !important;
-    }
-
 }
