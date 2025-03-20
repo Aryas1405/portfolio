@@ -6,7 +6,7 @@
     border-radius: 10px;
     padding: 35px;
     margin-top: 30px;
-
+    
 }
 
 .about-section {
@@ -16,6 +16,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 100px;
+    scroll-margin-top: 80px !important;
 }
 
 .title {

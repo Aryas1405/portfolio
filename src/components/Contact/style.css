@@ -1,0 +1,83 @@
+/* General Styles */
+.contact-container {
+    display: flex;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #0b0f1f, #1a1a2e); /* Dark gradient background */
+    color: #e0e0e0;
+}
+
+/* Contact Information Section */
+.contact-info {
+    flex: 1;
+    background-color: #121826;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.contact-info h4 {
+    color: #121826; /* Violet Highlight */
+    margin-bottom: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.contact-item svg {
+    color: #121826;
+}
+
+.contact-icons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.contact-icons svg {
+    cursor: pointer;
+    color: #121826;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-icons svg:hover {
+    transform: scale(1.2);
+    color: #121826;
+}
+
+/* Message Form Section */
+.contact-form {
+    flex: 1;
+    background-color: #121826;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.contact-form .MuiTextField-root {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+.contact-form .MuiButton-root {
+    background-color: #121826;
+    color: #ffffff;
+    border-radius: 8px;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+}
+
+.contact-form .MuiButton-root:hover {
+    background-color: #1e1329;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+}

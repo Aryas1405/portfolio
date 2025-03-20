@@ -43,7 +43,7 @@ const Projects = () => {
 
     return (
         <Container id="projects" className="projects-container">
-            <Typography variant="h2" className="section-title">Projects</Typography>
+            <Typography variant="h4" className="section-title">Projects</Typography>
             <Box className="project-grid">
                 {projects.map((project, index) => (
                     <Card key={index} className="project-card">

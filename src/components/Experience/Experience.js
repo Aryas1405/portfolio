@@ -62,8 +62,6 @@ const Experience = () => {
                                 {exp.company}
                             </a>
                         </Typography>
-
-
                         {/* Bullet Points for Key Responsibilities */}
                         <ul className="experience-points">
                             {exp.points.map((point, idx) => (

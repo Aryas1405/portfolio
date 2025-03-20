@@ -1,6 +1,14 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .header-appbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures the header stays on top */
     background: linear-gradient(90deg, #0b1522, #020617, #000000) !important;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9) !important; /* Deep shadow for bold presence */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9) !important;
     padding: 0px 8% !important;
     height: 80px !important;
 }
@@ -52,7 +60,6 @@
     width: 250px;
     height: 100vh;
     padding: 20px 0;
-    border-right: 2px solid #3A7DFF;
 }
 
 .sidebar-name {
@@ -78,5 +85,9 @@
 
     .menu-icon {
         display: block !important;
+    }
+
+    .header-appbar {
+        height: 60px !important;
     }
 }

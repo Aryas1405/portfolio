@@ -3,6 +3,7 @@
     align-items: center !important;
     flex-direction: column !important;
     max-width: 100% !important;
+    scroll-margin-top: 80px !important;
 }
 
 .experience-card {
@@ -18,6 +19,7 @@
 .exp-name {
     font-weight: bold !important;
     margin-bottom: 40px !important;
+    text-align: center;
 }
 
 .title {
@@ -50,4 +52,14 @@
     display: inline-block;
     width: 1em;
     margin-left: -1em;
+}
+
+@media (max-width: 768px) {
+    .title-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .experience-card {
+        padding: 10px !important;
+    }
 }

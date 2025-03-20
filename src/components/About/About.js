@@ -4,7 +4,7 @@ import './styles.css'
 
 const About = () => {
     return (
-        <Box className='about-section'>
+        <Box className='about-section' id="about">
             <Typography variant='h4' className='title'>About Me</Typography>
             <Box className='about-container'>
                 <Typography variant="h6" className="description">

@@ -55,7 +55,7 @@ const skillsData = [
 
 const Skills = () => {
     return (
-        <Box className='skills-section'>
+        <Box className='skills-section' id="skills">
             <Typography variant="h4" className='skills-title'>
                 Technical Skills
             </Typography>

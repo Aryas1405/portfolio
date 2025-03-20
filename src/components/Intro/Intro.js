@@ -6,7 +6,7 @@ import CV from './../../assets/files/HarshResume.pdf'
 
 const Intro = () => {
     return (
-        <Box className='intro-container'>
+        <Box className='intro-container' id="home">
             <Box className="intro">
                 <Typography variant="h2" gutterBottom color="primary" className='intro-name'>
                     Hi, I'm Harsh Kumar Arya
@@ -18,7 +18,7 @@ const Intro = () => {
                     I am a Software Developer dedicated to building scalable, secure, and high-performance backend systems that drive modern applications and deliver exceptional user experiences.
                 </Typography>
                 <Box className='button-container'>
-                    <Button className='touch-button'>Get in Touch</Button>
+                    <Button className='touch-button' href="#contact">Get in Touch</Button>
                     <Button
                         className='cv-button'
                         onClick={() => {
