@@ -1,73 +1,90 @@
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Box, Paper } from '@mui/material';
+import { TextField, Button, Typography, Box } from '@mui/material';
 import { Email, Phone, LocationOn, LinkedIn, GitHub } from '@mui/icons-material';
 import './style.css';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 
 const Contact = () => {
     const [formVisible, setFormVisible] = useState(true);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: '',
+    });
 
-    const handleSubmit = (event) => {
+    // Handle input changes
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    // Handle form submission
+    const handleSubmit = async (event) => {
         event.preventDefault();
         setFormVisible(false);
-        setShowSuccessMessage(true);
 
+        const API_URL = "https://hqp4dofv1m.execute-api.eu-north-1.amazonaws.com/prod";
+
+        const payload = {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            timestamp: new Date().toISOString(), // Capture submission time
+        };
+
+        try {
+            const response = await axios.post(API_URL, payload, {
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            if (response.status === 200) {
+                setShowSuccessMessage(true);
+                setFormData({ name: '', email: '', message: '' }); // Reset form fields
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("Failed to send message. Please try again.");
+            setFormVisible(true);
+        }
+
+        // Show form again after 5 seconds
         setTimeout(() => {
             setFormVisible(true);
             setShowSuccessMessage(false);
         }, 5000);
     };
+
     const smoothAnimation = {
-        hidden: {
-            opacity: 0,
-            y: 30  // Subtle movement for a gentler effect
-        },
+        hidden: { opacity: 0, y: 30 },
         visible: {
             opacity: 1,
             y: 0,
-            transition: {
-                duration: 1.5,  // Extended duration for smoother flow
-                ease: [0.25, 1, 0.5, 1]  // Soft, natural easing curve
-            }
+            transition: { duration: 1.5, ease: [0.25, 1, 0.5, 1] }
         }
     };
+
     return (
-        <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }} // Trigger animation when 30% visible
-            variants={smoothAnimation}
-        >
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={smoothAnimation}>
             <Box id="contact" className="contact-container">
                 <Typography variant='h4' className='title'>Get In Touch</Typography>
 
                 <Box className='contact-section'>
+                    {/* Contact Information */}
                     <Box className="contact-info">
                         <Typography variant="h5" className='info-title' gutterBottom>Contact Information</Typography>
                         <Box className="contact-item">
                             <Email />
-                            <Typography
-                                component="a"
-                                href="mailto:harsh2arya@gmail.com"
-                                className='email-link'
-                            >
-                                harsh2arya@gmail.com
-                            </Typography>
+                            <Typography component="a" href="mailto:harsh2arya@gmail.com" className='email-link'>harsh2arya@gmail.com</Typography>
                         </Box>
-
                         <Box className="contact-item">
                             <Phone />
-                            <Typography component="a" href='tel:+918909614648' className="email-link">
-                                +918909614648
-                            </Typography>
+                            <Typography component="a" href='tel:+918909614648' className="email-link">+918909614648</Typography>
                         </Box>
-
                         <Box className="contact-item">
                             <LocationOn />
                             <Typography>Noida, Uttar Pradesh, India</Typography>
                         </Box>
-
                         <Box className="contact-icons">
                             <a href="https://www.linkedin.com/in/harsh2arya" target="_blank" rel="noopener noreferrer">
                                 <LinkedIn />
@@ -78,6 +95,7 @@ const Contact = () => {
                         </Box>
                     </Box>
 
+                    {/* Contact Form */}
                     <Box className='contact-info'>
                         <Typography variant="h5" className='info-title' gutterBottom>Send a Message</Typography>
 
@@ -95,6 +113,9 @@ const Contact = () => {
                                     className='form-input'
                                     fullWidth
                                     label="Your Name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
                                     margin="normal"
                                     required
                                     InputLabelProps={{ style: { color: '#7a7979' } }}
@@ -106,6 +127,9 @@ const Contact = () => {
                                     className='form-input'
                                     fullWidth
                                     label="your.email@example.com"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     margin="normal"
                                     required
                                     type="email"
@@ -118,6 +142,9 @@ const Contact = () => {
                                     className='form-input'
                                     fullWidth
                                     label="Your Message"
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
                                     multiline
                                     rows={4}
                                     margin="normal"
@@ -126,12 +153,7 @@ const Contact = () => {
                                     InputProps={{ style: { color: '#e0e0e0' } }}
                                 />
 
-                                <Button
-                                    type="submit"
-                                    variant="contained"
-                                    className='submit-button'
-                                    fullWidth
-                                >
+                                <Button type="submit" variant="contained" className='submit-button' fullWidth>
                                     Send Message
                                 </Button>
                             </Box>
