@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Box } from '@mui/material';
+import { TextField, Button, Typography, Box, CircularProgress } from '@mui/material';
 import { Email, Phone, LocationOn, LinkedIn, GitHub } from '@mui/icons-material';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 import './style.css';
 import { motion } from 'framer-motion';
 import axios from 'axios';
@@ -8,9 +10,12 @@ import axios from 'axios';
 const Contact = () => {
     const [formVisible, setFormVisible] = useState(true);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+    const [loading, setLoading] = useState(false);  // New state for loader
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        phone: '',
         message: '',
     });
 
@@ -23,15 +28,18 @@ const Contact = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         setFormVisible(false);
+        setLoading(true);  // Start loader
 
         const API_URL = "https://hqp4dofv1m.execute-api.eu-north-1.amazonaws.com/prod";
 
         const payload = {
             name: formData.name,
             email: formData.email,
+            phone: formData.phone,
             message: formData.message,
             timestamp: new Date().toISOString(), // Capture submission time
         };
+        console.log(payload)
 
         try {
             const response = await axios.post(API_URL, payload, {
@@ -40,12 +48,15 @@ const Contact = () => {
 
             if (response.status === 200) {
                 setShowSuccessMessage(true);
-                setFormData({ name: '', email: '', message: '' }); // Reset form fields
+                setFormData({ name: '', email: '', phone: '', message: '' }); // Reset form fields
+                setLoading(false);
+
             }
         } catch (error) {
             console.error("Error submitting form:", error);
             alert("Failed to send message. Please try again.");
             setFormVisible(true);
+            setLoading(false);
         }
 
         // Show form again after 5 seconds
@@ -105,8 +116,13 @@ const Contact = () => {
                             </Typography>
                         )}
 
-                        {/* Form Visibility Control */}
-                        {formVisible && (
+                        {loading && (
+                            <Box className="loader-container">
+                                <CircularProgress color="primary" />
+                                <Typography variant="body1"> Sending you message...</Typography>
+                            </Box>
+                        )}
+                        {!loading && formVisible && (
                             <Box component="form" onSubmit={handleSubmit}>
                                 <Typography className='form-label'>Name</Typography>
                                 <TextField
@@ -136,7 +152,21 @@ const Contact = () => {
                                     InputLabelProps={{ style: { color: '#7a7979' } }}
                                     InputProps={{ style: { color: '#e0e0e0' } }}
                                 />
-
+                                <Typography className='form-label'>Phone</Typography>
+                                <PhoneInput
+                                    country={'in'}
+                                    value={formData.phone}
+                                    className='form-input'
+                                    onChange={(phone) => setFormData({ ...formData, phone })}
+                                    inputProps={{
+                                        name: 'phone',
+                                        required: true,
+                                        autoFocus: false,
+                                    }}
+                                    containerClass="phone-input-container"
+                                    inputClass="form-input phone-input"
+                                    buttonClass="phone-button"
+                                />
                                 <Typography className='form-label'>Message</Typography>
                                 <TextField
                                     className='form-input'

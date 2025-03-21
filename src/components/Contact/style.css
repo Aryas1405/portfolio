@@ -121,15 +121,68 @@
     opacity: 1;
 }
 
+.phone-input {
+    border-radius: 12px !important;
+    background: #2b3749 !important;
+    color: #ffffff !important;
+    padding: 10px 15px !important;
+    outline: none !important;
+    border: none !important;
+}
+
+.phone-input::placeholder {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+.phone-button {
+    background: #2b3749 !important;
+    border-right: 1px solid #7a7979 !important;
+}
+
 .submit-button {
     background-color: #2563eb !important;
     margin-top: 20px !important;
     text-transform: none !important;
     border-radius: 10px !important;
 }
-
+.react-tel-input {
+    width: inherit !important;
+}
+.react-tel-input .flag-dropdown  {
+    border: none !important;
+}
+.react-tel-input .form-control {
+    width: 85% !important;
+}
+.react-tel-input .flag-dropdown.open .selected-flag {
+    background: none !important;
+}
+.react-tel-input .selected-flag:focus,
+.react-tel-input .selected-flag:hover {
+    background-color: #2b3749 !important;
+}
+ 
 .success-message {
     color: #7ecc54 !important
+}
+
+.react-tel-input .country-list {
+    background-color: #2b3749 !important;
+    text-align: left !important;
+}
+.react-tel-input .country-list .country.highlight {   
+    background-color: #2b3749 !important;
+    text-align: left !important;
+}
+.country-list .country:hover {
+    background-color: #3b4a5a !important;
+    color: #ffffff !important; 
+}
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 @media (max-width: 768px) {
     .contact-container {
